@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package reservation;
+
+option go_package = './proto';
+
+service ReservationService {
+    rpc createReservation (Reservation) returns (Response);
+    rpc sayHello (Message) returns (Message);
+}
+
+message Reservation {
+  string id = 1;
+  string user_id = 2;
+  string table_id = 3;
+  string reservation_date = 4;
+  int guest_count = 5;
+  string status = 6;
+}
+
+message Response {
+    string message = 1;
+    bool success = 2;
+}
+
+message Message {
+    string body = 1;
+}
