@@ -14,7 +14,7 @@ message Reservation {
   string user_id = 2;
   string table_id = 3;
   string reservation_date = 4;
-  int guest_count = 5;
+  int32 guest_count = 5;
   string status = 6;
 }
 
