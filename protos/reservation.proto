@@ -5,24 +5,83 @@ package reservation;
 option go_package = './proto';
 
 service ReservationService {
-    rpc createReservation (Reservation) returns (Response);
+    // RPC para crear una reserva
+    rpc CreateReservation (CreateReservationRequest) returns (Response);
+    // RPC para obtener una reserva por ID
+    rpc GetReservationByID (GetReservationByIDRequest) returns (Reservation);
+    // RPC para obtener reservas por usuario
+    rpc GetReservationsByUserID (GetReservationsByUserIDRequest) returns (Reservations);
+    // RPC para obtener reservas por fecha
+    rpc GetReservationsByDate (GetReservationsByDateRequest) returns (Reservations);
+    // RPC para actualizar una reserva
+    rpc UpdateReservation (UpdateReservationRequest) returns (Response);
+    // RPC para eliminar una reserva
+    rpc DeleteReservation (DeleteReservationRequest) returns (Response);
     rpc sayHello (Message) returns (Message);
 }
 
-message Reservation {
-  string id = 1;
-  string user_id = 2;
-  string table_id = 3;
-  string reservation_date = 4;
-  int32 guest_count = 5;
-  string status = 6;
+message Message {
+    string body = 1;
 }
 
+// Mensaje para crear una reserva
+message CreateReservationRequest {
+    string id = 1;
+    string user_id = 2;
+    string table_id = 3;
+    string reservation_date = 4;
+    int32 guest_count = 5;
+    string status = 6;
+}
+
+// Mensaje para obtener una reserva por ID
+message GetReservationByIDRequest {
+    string id = 1;
+}
+
+// Mensaje para obtener reservas por usuario
+message GetReservationsByUserIDRequest {
+    string user_id = 1;
+}
+
+// Mensaje para obtener reservas por fecha
+message GetReservationsByDateRequest {
+    string reservation_date = 1;
+}
+
+// Mensaje para actualizar una reserva
+message UpdateReservationRequest {
+    string id = 1;
+    string table_id = 2;
+    string reservation_date = 3;
+    int32 guest_count = 4;
+    string status = 5;
+}
+
+// Mensaje para eliminar una reserva
+message DeleteReservationRequest {
+    string id = 1;
+}
+
+// Mensaje de respuesta genérica
 message Response {
     string message = 1;
     bool success = 2;
 }
 
-message Message {
-    string body = 1;
+// Mensaje de reserva
+message Reservation {
+    string id = 1;
+    string user_id = 2;
+    string table_id = 3;
+    string reservation_date = 4;
+    int32 guest_count = 5;
+    string status = 6;
+    string create_at = 7;
+    string update_at = 8;
+}
+
+// Mensaje para una lista de reservas
+message Reservations {
+    repeated Reservation reservations = 1;
 }
