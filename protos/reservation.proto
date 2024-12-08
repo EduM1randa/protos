@@ -18,6 +18,15 @@ service ReservationService {
     // RPC para eliminar una reserva
     rpc DeleteReservation (DeleteReservationRequest) returns (Response);
     rpc sayHello (Message) returns (Message);
+
+    // RPC para crear una mesa
+    rpc CreateTable (CreateTableRequest) returns (Response);
+    // RPC para obtener todas las mesas
+    rpc GetTables (Empty) returns (Tables);
+    // RPC para actualizar el estado o capacidad de una mesa
+    rpc UpdateTable (UpdateTableRequest) returns (Response);
+    // RPC para obtener mesas disponibles para un día específico
+    rpc GetAvailableTables (GetAvailableTablesRequest) returns (Tables);
 }
 
 message Message {
@@ -84,4 +93,39 @@ message Reservation {
 // Mensaje para una lista de reservas
 message Reservations {
     repeated Reservation reservations = 1;
+}
+// Mensaje vacío
+message Empty {}
+
+// Mensaje para crear una mesa
+message CreateTableRequest {
+    string id = 1;
+    int32 number = 2;
+    int32 capacity = 3;
+    bool is_reserved = 4;
+}
+
+// Mensaje para actualizar una mesa
+message UpdateTableRequest {
+    string id = 1;
+    int32 capacity = 2;
+    bool is_reserved = 3;
+}
+
+// Mensaje para obtener mesas disponibles para un día específico
+message GetAvailableTablesRequest {
+    string reservation_date = 1;
+}
+
+// Mensaje de una mesa
+message Table {
+    string id = 1;
+    int32 number = 2;
+    int32 capacity = 3;
+    bool is_reserved = 4;
+}
+
+// Mensaje de múltiples mesas
+message Tables {
+    repeated Table tables = 1;
 }
