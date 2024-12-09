@@ -17,8 +17,9 @@ service ReservationService {
     rpc UpdateReservation (UpdateReservationRequest) returns (Response);
     // RPC para eliminar una reserva
     rpc DeleteReservation (DeleteReservationRequest) returns (Response);
-    rpc sayHello (Message) returns (Message);
+}
 
+service TableService {
     // RPC para crear una mesa
     rpc CreateTable (CreateTableRequest) returns (Response);
     // RPC para obtener todas las mesas
