@@ -36,12 +36,11 @@ message Message {
 
 // Mensaje para crear una reserva
 message CreateReservationRequest {
-    string id = 1;
-    string user_id = 2;
-    string table_id = 3;
-    string reservation_date = 4;
-    int32 guest_count = 5;
-    string status = 6;
+    string user_id = 1;
+    string table_id = 2;
+    string reservation_date = 3;
+    int32 guest_count = 4;
+    string status = 5;
 }
 
 // Mensaje para obtener una reserva por ID
@@ -100,10 +99,9 @@ message Empty {}
 
 // Mensaje para crear una mesa
 message CreateTableRequest {
-    string id = 1;
-    int32 number = 2;
-    int32 capacity = 3;
-    bool is_reserved = 4;
+    int32 number = 1;
+    int32 capacity = 2;
+    bool is_reserved = 3;
 }
 
 // Mensaje para actualizar una mesa
