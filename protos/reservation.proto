@@ -28,8 +28,9 @@ message CreateReservationRequest {
     string user_id = 1;
     string table_id = 2;
     string reservation_date = 3;
-    int32 guest_count = 4;
-    string status = 5;
+    string reservation_time = 4;
+    int32 guest_count = 5;
+    string status = 6;
 }
 
 message GetReservationByIDRequest {
@@ -48,8 +49,9 @@ message UpdateReservationRequest {
     string id = 1;
     string table_id = 2;
     string reservation_date = 3;
-    int32 guest_count = 4;
-    string status = 5;
+    string reservation_time = 4; 
+    int32 guest_count = 5;
+    string status = 6;
 }
 
 message DeleteReservationRequest {
@@ -66,15 +68,17 @@ message Reservation {
     string user_id = 2;
     string table_id = 3;
     string reservation_date = 4;
-    int32 guest_count = 5;
-    string status = 6;
-    string create_at = 7;
-    string update_at = 8;
+    string reservation_time = 5; 
+    int32 guest_count = 6;
+    string status = 7;
+    string create_at = 8;
+    string update_at = 9;
 }
 
 message Reservations {
     repeated Reservation reservations = 1;
 }
+
 message Empty {}
 
 message CreateTableRequest {
